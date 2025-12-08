@@ -1,12 +1,13 @@
-import "./App.css";
+import "./App.css"
+import AddTask from "./components/AddTask";
 
 function App() {
   return (
-    <>
-      <h1>Vite + React</h1>
-      <h2>React to To Do App</h2>
-      <h3>Internship Project at Fafadia Tech</h3>
-    </>
+    <div>
+      <h1>React to To Do</h1>
+      <div className="task-container"></div>
+      <AddTask />
+    </div>
   );
 }
 
