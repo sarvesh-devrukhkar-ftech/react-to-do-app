@@ -1,14 +1,12 @@
-import "./App.css"
-import AddTask from "./components/AddTask";
+import "./App.css";
+import ToDoApp from "./components/ToDoApp";
 
 function App() {
-  return (
-    <div>
-      <h1>React to To Do</h1>
-      <div className="task-container"></div>
-      <AddTask />
-    </div>
-  );
+    return (
+        <>
+            <ToDoApp />
+        </>
+    );
 }
 
 export default App;
