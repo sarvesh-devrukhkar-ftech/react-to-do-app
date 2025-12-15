@@ -1,11 +1,16 @@
-import "../styles/AddTask.css"
+import "../styles/AddTask.css";
 
 export default function AddTask() {
   return (
     <div className="add-task">
       <div className="input-container">
-        <input type="text" name="" id="add-task" placeholder="Add Task..." />
-        <button>Add</button>
+        <label htmlFor="add-task" for="add-task">
+          Add Task
+        </label>
+        <input type="text" name="add-task" id="add-task" required />
+        <button>
+          <b>Add</b>
+        </button>
       </div>
     </div>
   );
