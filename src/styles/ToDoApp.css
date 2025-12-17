@@ -1,3 +1,16 @@
+h1 {
+    text-align: center;
+}
+
 .input-container {
     text-align: center;
+    background-color: gray;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.task-container {
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
 }

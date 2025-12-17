@@ -4,7 +4,7 @@ import Task from "./Task";
 
 export default function ToDoApp() {
     const [task, setTask] = useState(""); // Task Input.
-    const [tasks, setTasks] = useState([]); // Task List.
+    const [tasks, setTasks] = useState(["Initial Task 1"]); // Task List.
 
     function handleAddTask() {
         setTasks([...tasks, task]);
@@ -12,20 +12,21 @@ export default function ToDoApp() {
     }
 
     return (
-        <div>
+        <>
             <h1>React to To Do</h1>
-            <div className="task-container">
-                {tasks.map((task, index) => <Task task={task} />)}
-            </div>
 
             <div className="input-container">
-                <label htmlFor="add-task" for="add-task">Add Task </label>
+                <h2><label htmlFor="add-task" for="add-task">Add Task</label></h2>
                 <input type="text" value={task} placeholder="Add task..."
                     onChange={(event) => setTask(event.target.value)} required />
                 <button onClick={() => handleAddTask()}>
                     <b>Add</b>
                 </button>
             </div>
-        </div>
+
+            <div className="task-container">
+                {tasks.map((task, index) => <Task task={task} />)}
+            </div>
+        </>
     );
 }
