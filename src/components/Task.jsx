@@ -1,10 +1,21 @@
 import "../styles/Task.css";
 
-// export default function Task({ task, deleteTask, toggleCompleted }) {
-export default function Task({ task }) {
+export default function Task({ task, deleteTask, toggleCompleted }) {
+    function handleChange() {
+        toggleCompleted(task.id);
+    }
+
     return (
-        <ul className="task">
-            <span>{task}</span>
-        </ul>
+        <li className="todo-item">
+            <input
+                type="checkbox"
+                checked={task.completed}
+                onChange={handleChange}
+            />
+            <span>{task.text}</span>
+            <button onClick={() => deleteTask(task.id)}>
+                X
+            </button>
+        </li>
     );
 }

@@ -13,4 +13,10 @@ h1 {
     text-align: center;
     width: 50%;
     margin: 0 auto;
+
+    .task {
+        list-style: none;
+        background-color: rebeccapurple;
+        padding: 1rem;
+    }
 }
