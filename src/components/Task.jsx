@@ -1,21 +1,16 @@
 import "../styles/Task.css";
 
-export default function Task({ task, deleteTask, toggleCompleted }) {
-    function handleChange() {
-        toggleCompleted(task.id);
-    }
+export default function Task({ task, handleDeleteTask, handleTaskCompleted }) {
 
     return (
-        <li className="todo-item">
+        <li>
             <input
                 type="checkbox"
-                checked={task.completed}
-                onChange={handleChange}
+                checked={task.isCompleted}
+                onChange={() => handleTaskCompleted(task.id)}
             />
-            <span>{task.text}</span>
-            <button onClick={() => deleteTask(task.id)}>
-                X
-            </button>
+            <p style={{ "textDecoration": (task.isCompleted) ? "line-through" : "none" }}>{task.text}</p>
+            <button onClick={() => handleDeleteTask(task.id)}><strong title="Remove">X</strong></button>
         </li>
     );
 }

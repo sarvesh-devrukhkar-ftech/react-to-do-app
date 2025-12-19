@@ -3,38 +3,28 @@ import { useState } from "react";
 import Task from "./Task";
 
 export default function ToDoApp() {
-    const [tasks, setTasks] = useState([
-        {
-            id: 1,
-            text: 'Task 1',
-            completed: true
-        },
-        {
-            id: 2,
-            text: 'Task 2',
-            completed: false
-        }
-    ]);
-
+    const [tasks, setTasks] = useState([]);
     const [text, setText] = useState('');
+
     function addTask(text) {
+        if (text === "") return;
         const newTask = {
             id: Date.now(),
             text,
-            completed: false
+            isCompleted: false
         };
         setTasks([...tasks, newTask]);
         setText('');
     }
 
-    function deleteTask(id) {
+    function handleDeleteTask(id) {
         setTasks(tasks.filter(task => task.id !== id));
     }
 
-    function toggleCompleted(id) {
+    function handleTaskCompleted(id) {
         setTasks(tasks.map(task => {
             if (task.id === id) {
-                return { ...task, completed: !task.completed };
+                return { ...task, isCompleted: !task.isCompleted };
             } else {
                 return task;
             }
@@ -46,10 +36,12 @@ export default function ToDoApp() {
             <h1>React to To Do</h1>
 
             <div className="input-container">
-                <h2><label htmlFor="add-task" for="add-task">Add Task</label></h2>
                 <input
+                    name="task-text"
+                    id="task-input"
                     value={text}
                     onChange={e => setText(e.target.value)}
+                    placeholder="Add Task..."
                     required
                 />
                 <button onClick={() => addTask(text)}>
@@ -58,14 +50,16 @@ export default function ToDoApp() {
             </div>
 
             <div className="task-container">
-                {tasks.map(task => (
-                    <Task
-                        key={task.id}
-                        task={task}
-                        deleteTask={deleteTask}
-                        toggleCompleted={toggleCompleted}
-                    />
-                ))}
+                <ul className="tasks-list">
+                    {tasks.map(task => (
+                        <Task
+                            key={task.id}
+                            task={task}
+                            handleDeleteTask={handleDeleteTask}
+                            handleTaskCompleted={handleTaskCompleted}
+                        />
+                    ))}
+                </ul>
             </div>
         </>
     );
